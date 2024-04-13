@@ -3,6 +3,7 @@ import os
 
 from dotenv import load_dotenv
 
+
 load_dotenv()
 
 pg_user = os.getenv('PG_USER')
