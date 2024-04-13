@@ -1,4 +1,5 @@
 import pandas as pd
+import string
 
 def calculate_sentiment_stats(df):
     """
@@ -25,3 +26,19 @@ def calculate_sentiment_stats(df):
     }
 
     return agg_stats, top_sentiments
+
+
+
+def preprocess_text(text):
+    # Convert to lowercase
+    text = text.lower()
+    # Remove punctuation
+    text = text.translate(str.maketrans('', '', string.punctuation))
+    # Tokenize the text
+    tokens = text.split()
+    # Remove stopwords
+    stop_words = set(["a", "an", "and", "the", "is", "in", "it", "of", "to", "with", "for"])
+    tokens = [word for word in tokens if word not in stop_words]
+    # Join tokens back into a string
+    text = ' '.join(tokens)
+    return text
